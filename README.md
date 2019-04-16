@@ -32,8 +32,10 @@ Implement a simple mobile cocktails catalogue (master / detail). The catalogue c
 
 **1. Cocktails list:**
 
-For each row of the list it will display the Cocktail name and photo (See wireframe 1).
-The API endpoint that should be consumed for this purpose is: 
+For each row of the list it will display the Cocktail name, photo and ingredients (See wireframe 1). 
+In the case where there are more than 2 ingredients, add a label that reads "y X ingredientes más" where `X` is the amount of extra ingredients.
+
+The API endpoint that has the list of drinks with Name and Photo is: 
 
 http://www.thecocktaildb.com/api/json/v1/1/filter.php?g=Cocktail_glass
 
@@ -47,6 +49,8 @@ This returns a JSON list of cocktails, and the information needed in order to po
 }
 ```
 
+You'll need to decide the approach to get the ingredients data that is not present on this endpoint. You can comment that approach and the implications inside the code and what can be done to improve this.
+
 Wireframe 1:
 
 ![screen shot 2018-02-02 at 12 53 57](https://user-images.githubusercontent.com/263229/35742087-40b1ce26-0818-11e8-91d7-5c2ea0d4a6aa.png)
@@ -56,7 +60,7 @@ Wireframe 1:
 
 **2. Cocktail detail:**
 
-Once the user taps on a row from the list mentioned in the previous feature it will push a new screen with the selected cocktail’s details, where it will show it’s name, photo, ingredients and instructions (See wireframe 2)
+Once the user taps on a row from the list mentioned in the previous feature it will push a new screen with the selected cocktail’s details, where it will show it’s name, photo, ingredients (with the quantity on each case next to it) and instructions (See wireframe 2).
 
 The endpoint to be used for this is the following:
  
