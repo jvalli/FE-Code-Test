@@ -1,0 +1,2 @@
+export const LOAD_COCKTAILS = 'LOAD_COCKTAILS';
+export const SELECT_COCKTAIL = 'SELECT_COCKTAIL';
