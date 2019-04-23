@@ -3,6 +3,7 @@ import { Stylesheet, View, Text, Image } from 'react-native';
 import AppService from '../../providers/app/AppService';
 import { NavigationActions } from 'react-navigation';
 import CocktailView from './details/CocktailView';
+import styles from './styles';
 
 class CocktailDetails extends Component {
   state = {
@@ -28,7 +29,7 @@ class CocktailDetails extends Component {
   }
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
         <CocktailView
           cocktail={this.state.cocktail}
         />

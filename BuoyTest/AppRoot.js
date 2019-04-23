@@ -13,10 +13,7 @@ import AppService from './src/providers/app/AppService';
 import { NavigationActions } from 'react-navigation';
 
 class AppRoot extends Component {
-    state = {
-      cocktails: [],
-      selectedCocktail: null
-    };
+    state = {};
     componentDidMount() {
       this.loadCocktails();
     }
@@ -24,7 +21,6 @@ class AppRoot extends Component {
         AppService.getCocktails(
             cocktails => {
                 this.props.loadCocktails(cocktails);
-                this.setState({ cocktails });
             },
             err => {
                 const modalProps = {
@@ -37,20 +33,19 @@ class AppRoot extends Component {
     }
     onItemPress(item) {
       this.props.selectCocktail(item.idDrink);
-      this.setState({ selectedCocktail: item });
       this.props.navigation.navigate('Details', {
         cocktailId: item.idDrink,
       });
     }
     render() {
         return (
-            <View style={{ flex: 1 }}>
+            <View>
                 <StatusBar barStyle="light-content" />
                 <CocktailsList
                   emptyMessage={'No Items.'}
                   onItemPress={this.onItemPress.bind(this)}
                   refreshing={false}
-                  cocktails={this.state.cocktails}
+                  cocktails={this.props.cocktails}
                 />
             </View>
         );

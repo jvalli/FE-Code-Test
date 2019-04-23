@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-import ReduxThunk from 'redux-thunk';
-import reducers from './src/reducers';
+import configureStore from './Store';
 import AppRoot from './AppRoot';
 import {
   CocktailsList,
@@ -11,9 +9,10 @@ import {
 } from './src/components/cocktails';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
+const store = configureStore();
+
 class App extends Component {
   render() {
-    const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
           <AppRoot navigation={this.props.navigation} />

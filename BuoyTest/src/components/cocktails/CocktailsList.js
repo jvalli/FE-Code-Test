@@ -10,15 +10,14 @@ class CocktailsList extends Component {
   )
 
   renderRows(object, indexRow) {
-    const cocktail = this.props.cocktails.find(cocktail => cocktail.idDrink === object.idDrink);
     return (
-      <TouchableWithoutFeedback onPress={() => this.props.onItemPress(cocktail)} >
+      <TouchableWithoutFeedback onPress={() => this.props.onItemPress(object)} >
         <View style={styles.cell}>
           <Image
             style={styles.photo}
-            source={{uri: cocktail.strDrinkThumb}}
+            source={{uri: object.strDrinkThumb}}
           />
-          <Text>{cocktail.strDrink}</Text>
+          <Text>{object.strDrink}</Text>
         </View>
       </TouchableWithoutFeedback >
     );

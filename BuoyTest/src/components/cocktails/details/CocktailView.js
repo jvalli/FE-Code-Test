@@ -12,7 +12,7 @@ class CocktailView extends Component {
           const keyIngredient = "strIngredient"+index
           const keyMeasure = "strMeasure"+index
           if (cocktail[keyIngredient] && cocktail[keyMeasure]) {
-              arrayIngredients.push(<Text key={index} style={styles.ingredient}>{cocktail[keyMeasure]+" "+cocktail[keyIngredient]}</Text>)
+              arrayIngredients.push(<Text key={index} style={styles.ingredient}>{cocktail[keyMeasure]} {cocktail[keyIngredient]}</Text>)
           }
       }
       return (

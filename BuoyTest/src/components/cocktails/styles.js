@@ -18,5 +18,8 @@ export default StyleSheet.create({
   photo: {
      width: 60,
      height: 60
+  },
+  container: {
+    flex: 1
   }
 });
