@@ -9,15 +9,15 @@ class CocktailsList extends Component {
     </View>
   )
 
-  renderRows(object, indexRow) {
+  renderRow = ({item, index}) => {
     return (
-      <TouchableWithoutFeedback onPress={() => this.props.onItemPress(object)} >
+      <TouchableWithoutFeedback onPress={() => this.props.onItemPress(item)} >
         <View style={styles.cell}>
           <Image
             style={styles.photo}
-            source={{uri: object.strDrinkThumb}}
+            source={{uri: item.strDrinkThumb}}
           />
-          <Text>{object.strDrink}</Text>
+          <Text>{item.strDrink}</Text>
         </View>
       </TouchableWithoutFeedback >
     );
@@ -34,7 +34,7 @@ class CocktailsList extends Component {
           ItemSeparatorComponent={() => <View style={styles.separatorStyle} />}
           keyExtractor={(item) => item.idDrink}
           ListEmptyComponent={() => <Text style={styles.emptyListStyle}>{emptyMessage}</Text>}
-          renderItem={({ item, index }) => this.renderRows(item, index)}
+          renderItem={this.renderRow}
         />
       </View>
     );
