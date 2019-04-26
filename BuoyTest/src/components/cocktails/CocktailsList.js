@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { Stylesheet, View, FlatList, Text, Image, TouchableWithoutFeedback } from 'react-native';
+import { Stylesheet, View, FlatList, Text, Image, TouchableWithoutFeedback, TextInput } from 'react-native';
 import styles from './styles';
 
 class CocktailsList extends Component {
   state = {}
   tableHeader = () => (
     <View>
+      <TextInput
+          style={{height: 40}}
+          placeholder="Type to search cocktails..."
+          onChangeText={(text) => this.props.onSearch(text)}
+        />
     </View>
   )
 

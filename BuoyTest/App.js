@@ -15,7 +15,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-          <AppRoot navigation={this.props.navigation} />
+          <AppRoot navigation={this.props.navigation} dispatch={store.dispatch} />
       </Provider>
     );
   }

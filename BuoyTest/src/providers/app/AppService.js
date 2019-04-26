@@ -33,4 +33,20 @@ export default class AppService {
       errorCallback(error);
     });
   }
+  static searchCocktails(text, successCallback, errorCallback) {
+    const endpoint = `${baseUrl}/search.php?s=${text}`;
+    fetch(endpoint, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    }).then((response) => response.json())
+    .then( async (responseJson) => {
+      successCallback(responseJson.drinks);
+    })
+    .catch((error) => {
+      errorCallback(error);
+    });
+  }
 }

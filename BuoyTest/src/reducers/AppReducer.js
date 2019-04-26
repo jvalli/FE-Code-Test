@@ -1,6 +1,7 @@
 import {
   LOAD_COCKTAILS,
-  SELECT_COCKTAIL
+  SELECT_COCKTAIL,
+  SEARCH_COCKTAIL
 } from '../actions/ActionTypes';
 
 const INITIAL_STATE = {
@@ -16,6 +17,8 @@ const AppReducer = (state = INITIAL_STATE, action) => {
       return { ...state, selectedCocktail: state.cocktails.find(cocktail => {
         return cocktail.idDrink === action.payload;
       }) };
+    case SEARCH_COCKTAIL:
+      return { ...state, text: action.payload };
     default:
       return state;
   }

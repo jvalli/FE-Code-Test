@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { View, StatusBar, Alert } from 'react-native';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import {
     loadCocktails,
-    selectCocktail
+    selectCocktail,
+    searchCocktail
 } from './src/actions';
 import {
   CocktailsList,
@@ -37,6 +39,20 @@ class AppRoot extends Component {
         cocktailId: item.idDrink,
       });
     }
+    onSearch(text) {
+      this.props.searchCocktail(text,
+          cocktails => {
+            this.props.loadCocktails(cocktails);
+        },
+          err => {
+            const modalProps = {
+                type: 'error',
+                buttonOk: 'OK',
+                message: `Search cocktails error:${err}`
+            };
+        }
+      );
+    }
     render() {
         return (
             <View>
@@ -44,6 +60,7 @@ class AppRoot extends Component {
                 <CocktailsList
                   emptyMessage={'No Items.'}
                   onItemPress={this.onItemPress.bind(this)}
+                  onSearch={this.onSearch.bind(this)}
                   refreshing={false}
                   cocktails={this.props.cocktails}
                 />
@@ -57,10 +74,15 @@ const mapStateToProps = ({ appReducer }) => ({
     selectedCocktail: appReducer.selectedCocktail
 });
 
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    loadCocktails,
+    selectCocktail,
+    searchCocktail
+  }, dispatch);
+}
+
 export default connect(
     mapStateToProps,
-    {
-        loadCocktails,
-        selectCocktail
-    }
+    mapDispatchToProps
 )(AppRoot);
