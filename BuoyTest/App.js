@@ -5,7 +5,8 @@ import configureStore from './Store';
 import AppRoot from './AppRoot';
 import {
   CocktailsList,
-  CocktailDetails
+  CocktailDetails,
+  CocktailAdd
 } from './src/components/cocktails';
 import { createStackNavigator, createAppContainer } from 'react-navigation';
 
@@ -23,7 +24,8 @@ class App extends Component {
 
 const BuoyTest = createStackNavigator({
   App: { screen: App },
-  Details: { screen: CocktailDetails }
+  Details: { screen: CocktailDetails },
+  Add: { screen: CocktailAdd }
 }, {
   initialRouteName: 'App',
   headerMode: 'screen',

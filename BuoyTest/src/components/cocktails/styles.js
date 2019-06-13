@@ -1,5 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import L from '../common/Layout';
+const screen = Dimensions.get("window");
 
 export default StyleSheet.create({
   emptyListStyle: {
@@ -21,5 +22,39 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1
+  },
+  header: {
+    flexDirection: 'row'
+  },
+  search: {
+    height: 40,
+    width: screen.width - 40,
+    alignSelf: 'flex-start'
+  },
+  plus: {
+    alignSelf: 'flex-end',
+    width: 40
+  },
+  row: {
+    marginTop: 10,
+    marginLeft: 20,
+    marginRight: 20
+  },
+  input: {
+    height: 40,
+    alignSelf: 'flex-start'
+  },
+  centered: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 30
+  },
+  buttonSave: {
+    backgroundColor: 'blue',
+    color: 'white'
   }
 });

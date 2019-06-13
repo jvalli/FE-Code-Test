@@ -9,7 +9,8 @@ import {
 } from './src/actions';
 import {
   CocktailsList,
-  CocktailDetails
+  CocktailDetails,
+  CocktailAdd
 } from './src/components/cocktails';
 import AppService from './src/providers/app/AppService';
 import { NavigationActions } from 'react-navigation';
@@ -53,6 +54,9 @@ class AppRoot extends Component {
         }
       );
     }
+    onAddPress() {
+      this.props.navigation.navigate('Add');
+    }
     render() {
         return (
             <View>
@@ -60,6 +64,7 @@ class AppRoot extends Component {
                 <CocktailsList
                   emptyMessage={'No Items.'}
                   onItemPress={this.onItemPress.bind(this)}
+                  onAddPress={this.onAddPress.bind(this)}
                   onSearch={this.onSearch.bind(this)}
                   refreshing={false}
                   cocktails={this.props.cocktails}
